@@ -1,0 +1,19 @@
+{
+  "name": "noryangjin_sise",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "test": "make test",
+    "test-cov": "make test-cov"
+  },
+  "dependencies": {
+    "express": "~3.0.0rc5",
+    "mongoose": "latest",
+    "jsdom": "latest",
+    "step": "latest",
+    "underscore": "latest",
+    "request": "latest",
+    "ejs-locals": "latest"
+  },
+  "devDependencies": {}
+}
