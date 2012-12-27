@@ -13,7 +13,7 @@
     "step": "latest",
     "underscore": "latest",
     "request": "latest",
-    "ejs-locals": "latest"
-  },
-  "devDependencies": {}
+    "ejs-locals": "latest",
+    "commander": "latest"
+  }
 }

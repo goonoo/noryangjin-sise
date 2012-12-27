@@ -5,8 +5,8 @@
 </head>
 <body>
   <h1>노량진 킹크랩 시세</h1>
-  <% for (var ymd in priceInfo) { %>
-    <p><%= ymd %>: <%= priceInfo[ymd] %>원</p>
+  <% for (var i=0, l=priceInfo.length; i<l; i++) { %>
+    <p><%= priceInfo[i].ymd %>: <%= priceInfo[i].price %>원</p>
   <% } %>
 </body>
 </html>
