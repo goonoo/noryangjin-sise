@@ -1,0 +1,6 @@
+{
+  "fishes": [
+    {"consonant": "ㅇ", "name": "(활)왕게", "home": "러시아", "size": "중", "pack": "kg", "alias": "킹크랩"},
+    {"consonant": "ㄷ", "name": "(활)대게", "home": "러시아", "size": "중", "pack": "kg", "alias": "대게"}
+  ]
+}

@@ -1,0 +1,145 @@
+/* 게시판 */
+legend {position:absolute; top:0; left:0; width:0; height:0; overflow:hidden; visibility:hidden; font-size:0; line-height:0}
+
+
+/* 게시판 테이블 */
+img {border:0}
+.tbl_type,.tbl_type th,.tbl_type td{border:0}
+.tbl_type a{color:#383838;text-decoration:none}
+.tbl_type{width:100%;border-bottom:1px solid #cacaca;color:#666;font-size:12px;table-layout:fixed}
+.tbl_type caption,.tbl_type .frm label{display:none}
+.tbl_type th{padding:5px 0 4px;border-top:solid 1px #1a6dca;border-bottom:solid 1px #cacaca; background:url(../image/common/bg_table_tit.gif) repeat-x; background-color:#f4f4f3;color:#2f2f2f;line-height:18px;vertical-align:top}
+.tbl_type .th_line_left {border-left:solid 1px #cacaca;}
+.tbl_type .th_line_rig {border-right:solid 1px #cacaca;}
+.tbl_type td{padding:8px 0 5px;border-bottom: dotted 1px #d2d2d2;text-align:center}
+.tbl_type .frm{padding:0;text-align:center}
+.tbl_type .frm input{margin:0}
+.tbl_type .num,.tbl_type .date,.tbl_type .hit{padding:0;font-family:Tahoma;font-size:11px;line-height:normal}
+.tbl_type .title{text-align:left}
+.tbl_type .title .pic,.tbl_type .title .new{margin:0 0 2px;vertical-align:middle}
+.tbl_type tr.reply .title a{padding-left:20px; background:url(../image/common/ico_reply_02.gif)  0 1px no-repeat}
+.tbl_type tr.reply td a.comment{padding:0;background:none;color:#f00;font-size:12px;font-weight:bold}
+.write_btn { text-align:center}
+
+
+.month_view  {width:700px;margin:0 auto;}
+.month_view .btn{ float:right; margin:20px 0}
+
+/* 스케쥴 */
+
+body,input,textarea,select,button,table{font-family:'돋움',Dotum,AppleGothic,sans-serif;font-size:12px}
+img,fieldset{border:0}
+ul,ol{list-style:none}
+em,address{font-style:normal}
+a{text-decoration:none}
+a:hover,a:active,a:focus{text-decoration:underline}
+button{border:0;background:none;cursor:pointer}
+.td_cld {width:700px; margin:0 auto}
+.blind{visibility:hidden;overflow:hidden;position:absolute; width:0;height:0;font-size:0;line-height:0}
+.cld_header{position:relative;width:700px;height:50px; margin:0 auto; border-top:1px solid #1a6dca; background:#f9f9f9; border-bottom:1px solid #dbdbdb;}
+.cld_header .ym{position:relative;width:110px;height:18px;margin:0 auto;font-size:10px;left:325px; top:16px; color:#f8f8f8}
+.cld_header .ym .nums{position:absolute;top:0;left:0}
+.cld_header .ym .nums span{display:inline-block;width:13px;height:18px;background:url(../images/bg/num_sp.gif)}
+.cld_header .ym .nums .n0{background-position:0 0}
+.cld_header .ym .nums .n1{background-position:0 -20px}
+.cld_header .ym .nums .n2{background-position:0 -40px}
+.cld_header .ym .nums .n3{background-position:0 -60px}
+.cld_header .ym .nums .n4{background-position:0 -80px}
+.cld_header .ym .nums .n5{background-position:0 -100px}
+.cld_header .ym .nums .n6{background-position:0 -120px}
+.cld_header .ym .nums .n7{background-position:0 -140px}
+.cld_header .ym .nums .n8{background-position:0 -160px}
+.cld_header .ym .nums .n9{background-position:0 -180px}
+.cld_header .ym .nums .d{width:6px;background-position:0 -200px}
+.cld_header .btn{display:block;position:absolute;width:70px;height:27px;background-image:url(../images/bg/bg_sp.gif);font-size:0}
+.cld_header .btn button{width:70px;height:25px;}
+.cld_header .pm{top:15px;left:17px;background-position:0 -196px} /* 이전달 */
+.cld_header .nm{top:15px;left:615px;background-position:0 -228px} /* 다음달 */
+.month_all {position:relative; height:27px; width:700px;background:#efefef; border-bottom:1px solid #c1c1c1; margin-bottom:13px} /* 전체 월*/
+.month_all .btn{display:block;position:absolute;width:27px;height:20px;background-image:url(../images/bg/bg_sp.gif);font-size:0}
+.month_all .btn button{width:25px;height:19px;}
+.month_all .n1{top:4px;left:20px; background-position:-116px -700px;} /* 1월 */
+.month_all .n2{top:4px;left:74px; background-position:-172px -700px;} /* 2월 */
+.month_all .n3{top:4px;left:129px; background-position:-228px -700px;} /* 3월 */
+.month_all .n4{top:4px;left:183px; background-position:-280px -700px;} /* 4월 */
+.month_all .n5{top:4px;left:239px; background-position:-336px -700px;} /* 5월 */
+.month_all .n6{top:4px;left:295px; background-position:-391px -700px;} /* 6월 */
+.month_all .n7{top:4px;left:351px; background-position:-448px -700px;} /* 7월 */
+.month_all .n8{top:4px;left:406px; background-position:-501px -700px;} /* 8월 */
+.month_all .n9{top:4px;left:461px; background-position:-557px -700px;}
+.month_all .n10{top:4px;left:518px; background-position:-617px -700px;} /* 10월 */
+.month_all .n11{top:4px;left:583px; background-position:-680px -700px;}
+.month_all .n12{top:4px;left:645px; background-position:-742px -700px;}
+
+.month_all .n1_on{top:4px;left:20px; background-position:-116px -723px;} /* 1월 */
+.month_all .n2_on{top:4px;left:74px; background-position:-172px -723px;} /* 2월 */
+.month_all .n3_on{top:4px;left:129px; background-position:-228px -723px;} /* 3월 */
+.month_all .n4_on{top:4px;left:183px; background-position:-280px -723px;} /* 4월 */
+.month_all .n5_on{top:4px;left:239px; background-position:-336px -723px;} /* 5월 */
+.month_all .n6_on{top:4px;left:295px; background-position:-391px -723px;} /* 6월 */
+.month_all .n7_on{top:4px;left:351px; background-position:-448px -723px;} /* 7월 */
+.month_all .n8_on{top:4px;left:406px; background-position:-501px -723px;} /* 8월 */
+.month_all .n9_on{top:4px;left:461px; background-position:-557px -723px;}
+.month_all .n10_on{top:4px;left:518px; background-position:-617px -723px;} /* 10월 */
+.month_all .n11_on{top:4px;left:583px; background-position:-680px -723px;}
+.month_all .n12_on{top:4px;left:645px; background-position:-742px -723px;}
+
+.bg {width:700px; border:0; background:url(../images/bg/bg_sp.gif) no-repeat -114px 0px; padding-bottom:10px; margin:0 auto}
+.tb_cal{width:700px; border:0;border-spacing:0; margin:0 auto}
+.tb_cal caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-height:0}
+.tb_cal th{ width:99px; height:26px;border:0} /* 월~토 */
+.tb_cal th img{vertical-align:top}
+.tb_cal td{position:relative;height:109px;border:0;vertical-align:top;}
+.tb_cal .sun,.tb_cal .sat{width:99px;}
+.tb_cal td span{display:block;	position:relative;width:27px; height:25px; margin:0 0 0 3px; background:url(../images/bg/bg_sp.gif);	vertical-align:top}
+.tb_cal .sun span{left:4px}
+.tb_cal td button{ position:absolute; top:0; left:0; width:28px;height:18px; margin:0; }
+.tb_cal td span span{display:inline-block;position:static; width:6px;height:17px; margin-top:4px;background:url(../images/bg/num_sp.gif);}
+.tb_cal .nm_none,.tb_cal .om_none,.tb_cal .hd_none{background:none}
+.tb_cal .nm_none .n0{background-position:-80px 0}
+.tb_cal .nm_none .n1{background-position:-80px -20px}
+.tb_cal .nm_none .n2{background-position:-80px -40px}
+.tb_cal .nm_none .n3{background-position:-80px -60px}
+.tb_cal .nm_none .n4{background-position:-80px -80px}
+.tb_cal .nm_none .n5{background-position:-80px -100px}
+.tb_cal .nm_none .n6{background-position:-80px -120px}
+.tb_cal .nm_none .n7{background-position:-80px -140px}
+.tb_cal .nm_none .n8{background-position:-80px -160px}
+.tb_cal .nm_none .n9{background-position:-80px -180px}
+.tb_cal .day_txt {width:94px; margin-left:3px; background:none;}
+.tb_cal .day_txt ul,li {margin:0; padding:0;text-align:left; overflow:hidden; text-overflow:ellipsis; }
+.tb_cal .day_txt li a{text-decoration:none; color:#666}
+.tb_cal .day_txt li a:hover,a:active,a:focus{text-decoration:underline; color:#333}
+.tb_cal .om_is{background-position:-40px 0}
+.tb_cal .om_none .n0,.tb_cal .om_is .n0{background-position:-280px 0}
+.tb_cal .om_none .n1,.tb_cal .om_is .n1{background-position:-280px -20px}
+.tb_cal .om_none .n2,.tb_cal .om_is .n2{background-position:-280px -40px}
+.tb_cal .om_none .n3,.tb_cal .om_is .n3{background-position:-280px -60px}
+.tb_cal .om_none .n4,.tb_cal .om_is .n4{background-position:-280px -80px}
+.tb_cal .om_none .n5,.tb_cal .om_is .n5{background-position:-280px -100px}
+.tb_cal .om_none .n6,.tb_cal .om_is .n6{background-position:-280px -120px}
+.tb_cal .om_none .n7,.tb_cal .om_is .n7{background-position:-280px -140px}
+.tb_cal .om_none .n8,.tb_cal .om_is .n8{background-position:-280px -160px}
+.tb_cal .om_none .n9,.tb_cal .om_is .n9{background-position:-280px -180px}
+.tb_cal .hd_is{background-position:-80px 0}
+.tb_cal .hd_none .n0,.tb_cal .hd_is .n0{background-position:-160px 0}
+.tb_cal .hd_none .n1,.tb_cal .hd_is .n1{background-position:-160px -20px}
+.tb_cal .hd_none .n2,.tb_cal .hd_is .n2{background-position:-160px -40px}
+.tb_cal .hd_none .n3,.tb_cal .hd_is .n3{background-position:-160px -60px}
+.tb_cal .hd_none .n4,.tb_cal .hd_is .n4{background-position:-160px -80px}
+.tb_cal .hd_none .n5,.tb_cal .hd_is .n5{background-position:-160px -100px}
+.tb_cal .hd_none .n6,.tb_cal .hd_is .n6{background-position:-160px -120px}
+.tb_cal .hd_none .n7,.tb_cal .hd_is .n7{background-position:-160px -140px}
+.tb_cal .hd_none .n8,.tb_cal .hd_is .n8{background-position:-160px -160px}
+.tb_cal .hd_none .n9,.tb_cal .hd_is .n9{background-position:-160px -180px}
+.tb_cal .tc_is{background-position:-40px -40px}
+.tb_cal .tc_none .n0,.tb_cal .tc_is .n0{background-position:-200px 0}
+.tb_cal .tc_none .n1,.tb_cal .tc_is .n1{background-position:-200px -20px}
+.tb_cal .tc_none .n2,.tb_cal .tc_is .n2{background-position:-200px -40px}
+.tb_cal .tc_none .n3,.tb_cal .tc_is .n3{background-position:-200px -60px}
+.tb_cal .tc_none .n4,.tb_cal .tc_is .n4{background-position:-200px -80px}
+.tb_cal .tc_none .n5,.tb_cal .tc_is .n5{background-position:-200px -100px}
+.tb_cal .tc_none .n6,.tb_cal .tc_is .n6{background-position:-200px -120px}
+.tb_cal .tc_none .n7,.tb_cal .tc_is .n7{background-position:-200px -140px}
+.tb_cal .tc_none .n8,.tb_cal .tc_is .n8{background-position:-200px -160px}
+.tb_cal .tc_none .n9,.tb_cal .tc_is .n9{background-position:-200px -180px}

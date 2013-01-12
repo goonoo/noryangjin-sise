@@ -1,0 +1,60 @@
+/* 게시판 */
+legend {position:absolute; top:0; left:0; width:0; height:0; overflow:hidden; visibility:hidden; font-size:0; line-height:0}
+
+
+/* 게시판 테이블 */
+img {border:0}
+.tbl_type,.tbl_type th,.tbl_type td{border:0}
+.tbl_type a{color:#383838;text-decoration:none}
+.tbl_type{width:100%;border-bottom:1px solid #cacaca;color:#666;font-size:12px;table-layout:fixed}
+.tbl_type caption,.tbl_type .frm label{display:none}
+.tbl_type th{padding:5px 0 4px;border-top:solid 1px #1a6dca;border-bottom:solid 1px #cacaca; background:url(../image/common/bg_table_tit.gif) repeat-x; background-color:#f4f4f3;color:#2f2f2f;line-height:18px;vertical-align:top}
+.tbl_type .th_line_left {border-left:solid 1px #cacaca;}
+.tbl_type .th_line_rig {border-right:solid 1px #cacaca;}
+.tbl_type td{padding:8px 0 5px;border-bottom: dotted 1px #d2d2d2;text-align:center}
+.tbl_type .frm{padding:0;text-align:center}
+.tbl_type .frm input{margin:0}
+.tbl_type .num,.tbl_type .date,.tbl_type .hit{padding:0;font-family:Tahoma;font-size:11px;line-height:normal}
+.tbl_type .title{text-align:left}
+.tbl_type .title .pic,.tbl_type .title .new{margin:0 0 2px;vertical-align:middle}
+.tbl_type tr.reply .title a{padding-left:20px; background:url(../image/common/ico_reply_02.gif)  0 1px no-repeat}
+.tbl_type tr.reply td a.comment{padding:0;background:none;color:#f00;font-size:12px;font-weight:bold}
+.write_btn { text-align:center}
+
+/* 페이징 */
+.paginate_complex{padding:15px 0;line-height:normal;text-align:center}
+.paginate_complex a,
+.paginate_complex strong{display:inline-block;position:relative;z-index:2;margin:0 -3px;padding:1px 8px;border-left:1px solid #d6d6d6;border-right:1px solid #d6d6d6;background-color:#fff;font:bold 11px/15px Tahoma, Sans-serif;color:#323232;text-decoration:none;vertical-align:top}
+.paginate_complex a:hover,
+.paginate_complex a:active,
+.paginate_complex a:focus{background-color:#f8f8f8}
+.paginate_complex strong{color:#ff8600}
+.paginate_complex .direction{border:0;font-weight:normal;color:#767676;text-decoration:none !important;z-index:1}
+.paginate_complex .direction:hover,
+.paginate_complex .direction:active,
+.paginate_complex .direction:focus{color:#323232;background-color:#fff}
+.paginate_complex .direction span{display:inline-block;position:relative;top:4px;width:0;height:0;font-size:0;line-height:0;vertical-align:top}
+
+/* 검색 */
+.board_search {padding:10px 0;}
+
+/* 설문조사 */
+
+.poll_tit { width:100%; font-size:12px; font-weight:bold; margin:15px 0 3px}
+
+img {border:0}
+.tbl_poll,.tbl_poll th,.tbl_poll td{border:0}
+.tbl_poll {width:100%; color:#666;font-size:12px;table-layout:fixed}
+.tbl_poll caption,.tbl_poll .frm label{display:none}
+.tbl_poll th{padding:2px;line-height:18px;}
+.tbl_poll .poll_rig {text-align:right}
+.tbl_poll .num,.tbl_poll .date,.tbl_poll .hit{padding:0;font-family:Tahoma;font-size:11px;line-height:normal}
+.poll_btn { text-align:center; padding:10px 0;}
+.poll_item {background:#eff5f8; padding:10px; text-align:left}
+.poll_item ul li { list-style:none; line-height:28px;}
+.poll_item p { font-weight:bold;}
+.poll_item radio { margin-top:5px}
+
+.poll_blue { color:#0e62c0; font-weight:bold; font-family:Tahoma;font-size:11px}
+
+

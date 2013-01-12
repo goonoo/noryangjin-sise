@@ -1,0 +1,594 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<title>달력</title>
+<link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!-- 스케줄 -->
+
+<div class="td_cld">
+    <div class="cld_header">
+            <h4 class="ym">2012.12 <span class="nums">
+                <span class="n2">
+                </span>
+                <span class="n0">
+                </span>
+                <span class="n1">
+                </span>
+                <span class="n2">
+                </span>
+                <span class="d">
+                </span>
+                <span class="n0">
+                </span>
+                <span class="n9">
+                </span>
+            </span>
+            </h4>
+        <span class="btn pm">
+            <button title=이전달 type="button">
+            <span class="blind">이전달</span>
+            </button>
+        </span> 
+        <span class="btn nm">
+            <button title=다음달 type="button">
+            <span class="blind">다음달</span>
+            </button>
+        </span> 
+    </div>
+    
+    <div class="month_all">
+    <span class="btn n1_on">
+            <button title=1월 type="button">
+            <span class="blind">1월</span>
+            </button>
+    </span>
+   <span class="btn n2">
+            <button title=2월 type="button">
+            <span class="blind">2월</span>
+            </button>
+    </span>
+   <span class="btn n3">
+            <button title=3월 type="button">
+            <span class="blind">3월</span>
+            </button>
+    </span>
+   <span class="btn n4">
+            <button title=4월 type="button">
+            <span class="blind">4월</span>
+            </button>
+    </span>
+   <span class="btn n5">
+            <button title=5월 type="button">
+            <span class="blind">5월</span>
+            </button>
+    </span>
+   <span class="btn n6">
+            <button title=6월 type="button">
+            <span class="blind">6월</span>
+            </button>
+    </span>
+   <span class="btn n7">
+            <button title=7월 type="button">
+            <span class="blind">7월</span>
+            </button>
+    </span>
+   <span class="btn n8">
+            <button title=8월 type="button">
+            <span class="blind">8월</span>
+            </button>
+    </span>
+   <span class="btn n9">
+            <button title=9월 type="button">
+            <span class="blind">9월</span>
+            </button>
+    </span>
+   <span class="btn n10">
+            <button title=10월 type="button">
+            <span class="blind">10월</span>
+            </button>
+    </span>
+   <span class="btn n11">
+            <button title=11월 type="button">
+            <span class="blind">11월</span>
+            </button>
+    </span>
+   <span class="btn n12">
+            <button title=12월 type="button">
+            <span class="blind">12월</span>
+            </button>
+    </span>
+    </div>
+<div class="bg">
+<table border="1" cellspacing="0" class="tb_cal">
+<caption>캘린더</caption>
+  <colgroup>
+  <col width="35">
+  <col width="35">
+  <col width="35">
+  <col width="35">
+  <col width="35">
+  <col width="35">
+  <col width="35">
+  </colgroup>
+    <thead>
+        <tr>
+            <th class="sun" scope="col">
+                <span class="blind">일</span>
+            </th>
+            <th scope="col">
+                <span class="blind">월</span>
+            </th>
+            <th scope="col">
+                <span class="blind">화</span>
+            </th>
+            <th scope="col">
+                <span class="blind">수</span>
+            </th>
+            <th scope="col">
+                <span class="blind">목</span>
+            </th>
+            <th scope="col">
+                <span class="blind">금</span>
+            </th>
+            <th class="sat" scope="col">
+                <span class="blind">토</span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+		<tr>
+        <!--[d] 각 버튼 state
+                om_none :다른 달, 일정 없음  | om_is :다른 달, 일정 있음
+                nm_none :기본 상태, 일정 없음 | hd_is :공휴일, 일정 있음  | hd_none :공휴일, 일정 없음 
+                tc_is :오늘 선택
+            -->
+            <td class="sun">
+                <span class="om_none">
+                <span class="n2">
+                </span>
+                <span class="n5">
+                </span>
+                <button title="25" type="button">
+                <span class="blind">25</span>
+                </button>
+              </span> 
+            </td>
+            <td>
+                <span class="om_is">
+                <span class="n2">
+                </span>
+                <span class="n6">
+                </span>
+                <button title="26" type="button">
+                <span class="blind">26</span>
+                <div>26</div>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="om_none">
+                <span class="n2">
+                </span>
+                <span class="n7">
+                </span>
+                <button title="27" type="button">
+                <span class="blind">27</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="om_none">
+                <span class="n2">
+                </span>
+                <span class="n8">
+                </span>
+                <button title="28" type="button">
+                <span class="blind">28</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="om_none">
+                <span class="n2">
+                </span>
+                <span class="n9">
+                </span>
+                <button title="29" type="button">
+                <span class="blind">29</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="om_none">
+                <span class="n3">
+                </span>
+                <span class="n0">
+                </span>
+                <button title="30" type="button">
+                <span class="blind">30</span>
+                </button>
+              </span>
+            </td>
+            <td class="sat">
+                <span class="nm_none">
+                <span class="n1">
+                </span>
+                <button title="1" type="button">
+                <span class="blind">1</span>
+                </button>
+              </span>
+            </td>
+            </tr>
+            <tr>
+            <td class="sun">
+                <span class="hd_none">
+                <span class="n2">
+                </span>
+                <button title="2" type="button">
+                <span class="blind">2</span>
+                </button>
+              </span>
+            </td>
+            <td>
+              <span class="nm_none">
+                <span class="n3">
+                </span>
+                <button title="3" type="button">
+                <span class="blind">3</span>
+                </button>
+              </span>
+
+              <div class="day_txt"><ul>
+              	  <li><a href="#">중간고사</a></li>
+                  <li><a href="#">영어듣기</a></li>
+                  </ul>
+              </div>
+
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n4">
+                </span>
+                <button title="4" type="button">
+                <span class="blind">4</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="hd_none">
+                <span class="n5">
+                </span>
+                <button title="5" type="button">
+                <span class="blind">5</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n6">
+                </span>
+                <button title="6" type="button">
+                <span class="blind">6</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n7">
+                </span>
+                <button title="7" type="button">
+                <span class="blind">7</span>
+                </button>
+              </span>
+            </td>
+            <td class="sat">
+                <span class="nm_none">
+                <span class="n8">
+                </span>
+                <button title="8" type="button">
+                <span class="blind">8</span>
+                </button>
+              </span>
+            </td>
+            </tr>
+            <tr>
+            <td class="sun">
+                <span class="hd_none">
+                <span class="n9">
+                </span>
+                <button title="9" type="button">
+                <span class="blind">9</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n1">
+                </span>
+                <span class="n0">
+                </span>
+                <button title="10" type="button">
+                <span class="blind">10</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n1">
+                </span>
+                <span class="n1">
+                </span>
+                <button title="11" type="button">
+                <span class="blind">11</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n1">
+                </span>
+                <span class="n2">
+                </span>
+                <button title="12" type="button">
+                <span class="blind">12</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="tc_is">
+                <span class="n1">
+                </span>
+                <span class="n3">
+                </span>
+                <button title="13" type="button">
+                <span class="blind">13</span>
+                </button>
+              </span>
+              <div class="day_txt"><ul>
+              	  <li><a href="#">대청소</a></li>
+                  <li><a href="#">환경미화 심사</a></li>
+                  </ul>
+              </div>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n1">
+                </span>
+                <span class="n4">
+                </span>
+                <button title="14" type="button">
+                <span class="blind">14</span>
+                </button>
+              </span>
+            </td>
+            <td class="sat">
+                <span class="nm_none">
+                <span class="n1">
+                </span>
+                <span class="n5">
+                </span>
+                <button title="15" type="button">
+                <span class="blind">15</span>
+                </button>
+              </span>
+            </td>
+		</tr>
+		<tr>
+            <td class="sun">
+                <span class="hd_none">
+                <span class="n1">
+                </span>
+                <span class="n6">
+                </span>
+                <button title="16" type="button">
+                <span class="blind">16</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n1">
+                </span>
+                <span class="n7">
+                </span>
+                <button title="17" type="button">
+                <span class="blind">17</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n1">
+                </span>
+                <span class="n8">
+                </span>
+                <button title="18" type="button">
+                <span class="blind">18</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n1">
+                </span>
+                <span class="n9">
+                </span>
+                <button title="19" type="button">
+                <span class="blind">19</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n2">
+                </span>
+                <span class="n0">
+                </span>
+                <button title="20" type="button">
+                <span class="blind">20</span>
+                </button>
+              </span>
+            </td>
+            <td>
+                <span class="hd_none">
+                <span class="n2">
+                </span>
+                <span class="n1">
+                </span>
+                <button title="21" type="button">
+                <span class="blind">21</span>                </button>
+              </span>
+            </td>
+            <td class="sat">
+                <span class="nm_none">
+                <span class="n2">
+                </span>
+                <span class="n2">
+                </span>
+                <button title="22" type="button">
+                <span class="blind">22</span>                </button>
+              </span>
+            </td>
+		</tr>
+		<tr>
+            <td class="sun">
+                <span class="hd_none">
+                <span class="n2">
+                </span>
+                <span class="n3">
+                </span>
+                <button title="23" type="button">
+                <span class="blind">23</span>                </button>
+              </span>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n2">
+                </span>
+                <span class="n4">
+                </span>
+                <button title="24" type="button">
+                <span class="blind">24</span>                </button>
+              </span>
+            </td>
+            <td>
+                <span class="hd_is">
+                <span class="n2">
+                </span>
+                <span class="n5">
+                </span>
+                <button title="25" type="button">
+                <span class="blind">25</span>                </button>
+              </span>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n2">
+                </span>
+                <span class="n6">
+                </span>
+                <button title="26" type="button">
+                <span class="blind">26</span>                </button>
+              </span>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n2">
+                </span>
+                <span class="n7">
+                </span>
+                <button title="27" type="button">
+                <span class="blind">27</span>                </button>
+              </span>
+            </td>
+            <td>
+                <span class="nm_none">
+                <span class="n2">
+                </span>
+                <span class="n8">
+                </span>
+                <button title="28" type="button">
+                <span class="blind">28</span>                </button>
+              </span>
+            </td>
+            <td class="sat">
+                <span class="nm_none">
+                <span class="n2">
+                </span>
+                <span class="n9">
+                </span>
+                <button title="29" type="button">
+                <span class="blind">29</span>                </button>
+              </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="sun">
+                <span class="hd_none">
+                <span class="n3">
+                </span>
+                <span class="n0">
+                </span>
+                <button title="30" type="button">
+                <span class="blind">30</span>                </button>
+              </span>
+            </td>
+            <td>
+                <span class="om_none">
+                <span class="n3">                </span>
+                <span class="n1">                </span>
+                <button title="31" type="button">
+                <span class="blind">31</span>                </button>
+              </span>
+            </td>
+      		<td>
+                <span class="om_is">
+                <span class="n1">
+                </span>
+                <button title="1" type="button">
+                <span class="blind">1</span>                </button>
+              </span>
+            </td>
+            <td>
+                <span class="om_none">
+                <span class="n2">
+                </span>
+                <button title="2" type="button">
+                <span class="blind">2</span>                </button>
+              </span>
+            </td>
+            <td>
+                <span class="om_none">
+                <span class="n3">
+                </span>
+                <button title="3" type="button">
+                <span class="blind">3</span>                </button>
+              </span>
+            </td>
+            <td>
+                <span class="om_none">
+                <span class="n4">
+                </span>
+                <button title="4" type="button">
+                <span class="blind">4</span>                </button>
+              </span>
+            </td>
+            <td class="sat">
+                <span class="om_none">
+                <span class="n5">
+                </span>
+                <button title="5" type="button">
+                <span class="blind">5</span>                </button>
+              </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<!-- 스케줄//-->
+</div>
+
+</body>
+</html>

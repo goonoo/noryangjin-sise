@@ -4,21 +4,22 @@ var program = require('commander');
 program
     .version('0.1')
     .option('-d, --datesize <n>', 'date size', parseInt)
+    .option('-b, --beforedays <n>', 'before days', parseInt)
     .parse(process.argv);
 
 var db = require('../lib/db');
 var sise = require('../lib/kingcrapSise');
 var Price = db.model('KingcrapPrice');
 var READ_SISE_DELAY = 5000;
-var now = new Date();
+var now = new Date() - (program.beforedays ? program.beforedays * 1000*60*60*24 : 0);
 var dateSize = program.datesize || 1;
 var getYmd = function (date) {
   var y = date.getFullYear();
   var m = date.getMonth()+1;
   var d = date.getDate();
   return ''+ y +
-        (m.length === 1 ? '0'+ m : m) +
-        (d.length === 1 ? '0'+ d : d);
+        (m < 10 ? '0'+ m : m) +
+        (d < 10 ? '0'+ d : d);
 };
 
 var start = function () {
