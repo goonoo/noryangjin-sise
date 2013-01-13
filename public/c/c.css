@@ -6,6 +6,13 @@ body {
   font: 1.5em/1.2 NanumGothic, sans-serif;
 }
 
+#index {
+	-moz-column-count: 2;
+	-moz-column-gap: 10px;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 10px;
+}
+
 .num {
   font-family: tahoma, sans-serif;
 }
@@ -51,7 +58,7 @@ article small {
   font-size: 1em;
 }
 article h1 {
-  width: 50%;
+  width: 40%;
   text-align: right;
   color: #fff;
   text-shadow: 1px 1px 2px #666;

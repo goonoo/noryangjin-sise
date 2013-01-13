@@ -2,13 +2,15 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
   <title>노량진 <%= name %> 시세</title>
   <link rel="stylesheet" href="/c/c.css">
 </head>
 <body>
   <header>
-    <h1>노량진 수산시장 시세 (<%= new Date().hstr('Y-m-d') %> 현재)</h1>
+    <h1><a href="http://www.susansijang.co.kr/cost/todayCost.do">노량진 수산시장</a> 시세 (<%= new Date().hstr('Y-m-d') %> 현재)</h1>
   </header>
+  <div class="body">
 <%
 var name = list[0].name;
 var price = list[0].price;
@@ -19,7 +21,7 @@ var changeClass = changes > 0 ? 'plus' : changes < 0 ? 'minus' : 'balance';
   <a href="/sise/<%= name %>">
     <h1><%= name %></h1>
     <strong class="num"><%= price %></strong>
-    <small class="num"><%= changeClass === 'plus' ? '+' : changeClass === 'minus' ? '-' : ''
+    <small class="num"><%= changeClass === 'plus' ? '+' : ''
       %><%= changes %></small>
   </a>
 </article>

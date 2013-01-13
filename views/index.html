@@ -2,13 +2,15 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
   <title>노량진 수산시장 시세</title>
   <link rel="stylesheet" href="/c/c.css">
 </head>
 <body>
   <header>
-    <h1>노량진 수산시장 시세 (<%= new Date().hstr('Y-m-d') %> 현재)</h1>
+    <h1><a href="http://www.susansijang.co.kr/cost/todayCost.do">노량진 수산시장</a> 시세 (<%= new Date().hstr('Y-m-d') %> 현재)</h1>
   </header>
+  <div id="index" class="body">
 <%
 list.forEach(function (data) {
   var name = data[0].name;
@@ -16,30 +18,17 @@ list.forEach(function (data) {
   var changes = data[1].price ? data[0].price - data[1].price : 0;
   var changeClass = changes > 0 ? 'plus' : changes < 0 ? 'minus' : 'balance';
 %>
-  <article class="<%= changeClass %>">
-    <a href="/sise/<%= name %>">
-      <h1><%= name %></h1>
-      <strong class="num"><%= price %></strong>
-      <small class="num"><%= changeClass === 'plus' ? '+' : changeClass === 'minus' ? '-' : ''
-        %><%= changes %></small>
-    </a>
-  </article>
+    <article class="<%= changeClass %>">
+      <a href="/sise/<%= name %>">
+        <h1><%= name %></h1>
+        <strong class="num"><%= price %></strong>
+        <small class="num"><%= changeClass === 'plus' ? '+' : ''
+          %><%= changes %></small>
+      </a>
+    </article>
 <%
 });
 %>
-  <article class="minus">
-  <a href="#">
-    <h1>마이너스테스트</h1>
-    <strong class="num">50000</strong>
-    <small class="num">-1200</small>
-</a>
-  </article>
-  <article class="balance">
-<a href="#">
-    <h1>보합테스트</h1>
-    <strong class="num">50000</strong>
-    <small class="num">-1200</small>
-</a>
-  </article>
+  </div>
 </body>
 </html>
