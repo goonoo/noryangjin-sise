@@ -6,11 +6,20 @@ body {
   font: 1.5em/1.2 NanumGothic, sans-serif;
 }
 
-#index {
-	-moz-column-count: 2;
-	-moz-column-gap: 10px;
-	-webkit-column-count: 2;
-	-webkit-column-gap: 10px;
+@media all and (min-width: 680px) and (max-width: 1020px) {
+  #index article {
+    float: left;
+    width: 48%;
+    margin-right: 1%;
+  }
+}
+
+@media all and (min-width: 1021px) {
+  #index article {
+    float: left;
+    width: 32%;
+    margin-right: 1%;
+  }
 }
 
 .num {
@@ -29,7 +38,7 @@ header h1 {
 }
 
 article {
-  margin: 0 0 .2em;
+  margin: 0 0 .3em;
   box-shadow: 0 0 3px #333;
 }
 article a {
@@ -66,6 +75,11 @@ article h1 {
 article strong {
   color: #7FFF00;
   font-weight: bold;
+}
+article i {
+  opacity: .8;
+  font-size: .5em;
+  font-style: normal;
 }
 article small {
   font-size: .6em;

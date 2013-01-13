@@ -1,6 +1,7 @@
 var express = require('express');
 var Step = require('step');
 var db = require('./lib/db');
+var fishUtil = require('./lib/fish');
 var config = require('./config.json');
 var app = express();
 var Price = db.model('Price');
@@ -8,8 +9,14 @@ var Price = db.model('Price');
 require('./util/func');
 
 app.configure(function(){
+  var dynamicHelpers = function (req, res, next) {
+    res.locals.fishUtil = fishUtil;
+    next();
+  };
+
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+  app.use(dynamicHelpers);
   app.use(app.router);
 	app.use(express['static']('./public'));
 
@@ -29,13 +36,17 @@ app.get('/', function (req, res, next) {
       var group = this.group();
 
       fishes.forEach(function (fish) {
-        Price.find({'name': fish.alias}).limit(2).exec(group());
+        Price.find({'name': fish.alias}).sort('field -ymd').limit(2).exec(group());
       });
     },
     function (err, list) {
+      if (err) {
+        next(err);
+        return;
+      }
+
       res.render('index', {
         locals: {
-          fishes: fishes,
           list: list
         }
       });

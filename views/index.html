@@ -13,6 +13,10 @@
   <div id="index" class="body">
 <%
 list.forEach(function (data) {
+  if (data.length <= 0) {
+    return;
+  }
+
   var name = data[0].name;
   var price = data[0].price;
   var changes = data[1].price ? data[0].price - data[1].price : 0;
@@ -21,9 +25,9 @@ list.forEach(function (data) {
     <article class="<%= changeClass %>">
       <a href="/sise/<%= name %>">
         <h1><%= name %></h1>
-        <strong class="num"><%= price %></strong>
+        <strong class="num"><%= price %><i class="pack">/<%= fishUtil.getPack(name) %></i></strong>
         <small class="num"><%= changeClass === 'plus' ? '+' : ''
-          %><%= changes %></small>
+          %><%= changes === 0 ? '-' : changes %></small>
       </a>
     </article>
 <%

@@ -5,6 +5,7 @@ program
     .version('0.1')
     .option('-d, --datesize <n>', 'date size', parseInt)
     .option('-b, --beforedays <n>', 'before days', parseInt)
+    .option('--fishname <s>', 'fish name to sync')
     .parse(process.argv);
 
 var db = require('../lib/db');
@@ -15,6 +16,7 @@ var FISHES = require('../config.json').fishes;
 
 var now = new Date() - (program.beforedays ? program.beforedays * 1000*60*60*24 : 0);
 var dateSize = program.datesize || 1;
+var fishname = program.fishname;
 var getYmd = function (date) {
   var y = date.getFullYear();
   var m = date.getMonth()+1;
@@ -33,7 +35,7 @@ var done = function () {
 };
 
 var sync = function (fishIdx, dateIdx) {
-  var next = function () {
+  var next = function (withoutDelay) {
     dateIdx++;
 
     if (dateIdx === dateSize) {
@@ -44,22 +46,26 @@ var sync = function (fishIdx, dateIdx) {
     if  (fishIdx === FISHES.length) {
       done();
       return;
-    } else {
-      setTimeout(function () {
-        sync(fishIdx, dateIdx);
-      }, READ_SISE_DELAY);
     }
+
+    setTimeout(function () {
+      sync(fishIdx, dateIdx);
+    }, withoutDelay ? 0 : READ_SISE_DELAY);
   };
   var ymd = getYmd(new Date(now.valueOf() - dateIdx * 1000*60*60*24));
 
-  sise.get(FISHES[fishIdx], ymd, function (price) {
-    if (price) {
-      syncPrice(FISHES[fishIdx], ymd, price, next);
-    } else {
-      console.log(FISHES[fishIdx].alias, ymd, 'X');
-      next();
-    }
-  });
+  if (fishname && FISHES[fishIdx].alias !== fishname) {
+    next(true);
+  } else {
+    sise.get(FISHES[fishIdx], ymd, function (price) {
+      if (price) {
+        syncPrice(FISHES[fishIdx], ymd, price, next);
+      } else {
+        console.log(FISHES[fishIdx].alias, ymd, 'X');
+        next();
+      }
+    });
+  }
 };
 
 var syncPrice = function (fish, ymd, price, callback) {
