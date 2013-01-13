@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>노량진 <%= name %> 시세</title>
+  <link rel="stylesheet" href="/c/c.css">
+</head>
+<body>
+  <header>
+    <h1>노량진 수산시장 시세 (<%= new Date().hstr('Y-m-d') %> 현재)</h1>
+  </header>
+<%
+var name = list[0].name;
+var price = list[0].price;
+var changes = list[1].price ? list[0].price - list[1].price : 0;
+var changeClass = changes > 0 ? 'plus' : changes < 0 ? 'minus' : 'balance';
+%>
+<article class="<%= changeClass %>">
+  <a href="/sise/<%= name %>">
+    <h1><%= name %></h1>
+    <strong class="num"><%= price %></strong>
+    <small class="num"><%= changeClass === 'plus' ? '+' : changeClass === 'minus' ? '-' : ''
+      %><%= changes %></small>
+  </a>
+</article>
+<div id="graph">여기다가 그래프를 그릴거야!</div>
+
+<script src="/j/d3.min.js"></script>
+<script>
+var data = [<% list.forEach(function (data) {
+  data.price
+}); %>];
+</script>
+
+</body>
+</html>

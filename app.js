@@ -20,6 +20,43 @@ app.configure(function(){
 });
 
 app.get('/', function (req, res, next) {
+  var today = new Date();
+  var thisYmd = today.hstr('Ymd');
+  var fishes = config.fishes;
+
+  Step(
+    function () {
+      var group = this.group();
+
+      fishes.forEach(function (fish) {
+        Price.find({'name': fish.alias}).limit(2).exec(group());
+      });
+    },
+    function (err, list) {
+      res.render('index', {
+        locals: {
+          fishes: fishes,
+          list: list
+        }
+      });
+    }
+  );
+});
+
+app.get('/sise/:name', function (req, res, next) {
+  var name = req.param('name');
+
+  Price.find({'name': name}).limit(50).exec(function (err, list) {
+    res.render('sise', {
+      locals: {
+        name: name,
+        list: list
+      }
+    });
+  });
+});
+
+app.get('/graph', function (req, res, next) {
   var now = new Date();
   var ym = req.param('ym', now.hstr('Ym'));
   var year = parseInt(ym.substr(0, 4), 10);
@@ -27,11 +64,14 @@ app.get('/', function (req, res, next) {
   var fishes = config.fishes;
 
   Price.find({'ymd': new RegExp("^"+ ym)}).sort('ymd').exec(function(err, list) {
-    for (var i=0; i<list.length; i++) {
-      for (var j=0; j<fishes.length; j++) {
+    var i, j;
+
+    for (i=0; i<list.length; i++) {
+      for (j=0; j<fishes.length; j++) {
         if (fishes[j].alias === list[i].name) {
-          if (!fishes[j].prices)
+          if (!fishes[j].prices) {
             fishes[j].prices = {};
+          }
 
           fishes[j].prices[list[i].ymd] = list[i].price;
           break;
