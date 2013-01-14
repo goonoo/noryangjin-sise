@@ -36,7 +36,7 @@ app.get('/', function (req, res, next) {
       var group = this.group();
 
       fishes.forEach(function (fish) {
-        Price.find({'name': fish.alias}).sort('field -ymd').limit(2).exec(group());
+        Price.find({'name': fish.alias}).sort('field -ymd').limit(6).exec(group());
       });
     },
     function (err, list) {

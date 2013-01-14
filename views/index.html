@@ -13,7 +13,7 @@
   <div id="index" class="body">
 <%
 list.forEach(function (data) {
-  if (data.length <= 0) {
+  if (data.length < 2) {
     return;
   }
 
@@ -25,10 +25,23 @@ list.forEach(function (data) {
     <article class="<%= changeClass %>">
       <a href="/sise/<%= name %>">
         <h1><%= name %></h1>
-        <strong class="num"><%= price %><i class="pack">/<%= fishUtil.getPack(name) %></i></strong>
-        <small class="num"><%= changeClass === 'plus' ? '+' : ''
-          %><%= changes === 0 ? '-' : changes %></small>
+        <div class="origin">(원산지: <%= fishUtil.getHome(name) %>)</div>
+        <div class="price">
+          <strong class="num"><%= price %><i class="pack">/<%= fishUtil.getPack(name) %></i></strong>
+          <small class="num"><%= changeClass === 'plus' ? '+' : ''
+            %><%= changes === 0 ? '-' : changes %></small>
+        </div>
       </a>
+      <div class="history">
+        지난 5일:
+        <% var idx = 0; %>
+        <% data.forEach(function (info) { %>
+          <% idx++ %>
+          <% if (idx === 1) return; %>
+          <%= idx > 2 ? '-' : '' %>
+          <%= info.price.format() %>
+        <% }); %>
+      </div>
     </article>
 <%
 });

@@ -6,22 +6,6 @@ body {
   font: 1.5em/1.2 NanumGothic, sans-serif;
 }
 
-@media all and (min-width: 680px) and (max-width: 1020px) {
-  #index article {
-    float: left;
-    width: 48%;
-    margin-right: 1%;
-  }
-}
-
-@media all and (min-width: 1021px) {
-  #index article {
-    float: left;
-    width: 32%;
-    margin-right: 1%;
-  }
-}
-
 .num {
   font-family: tahoma, sans-serif;
 }
@@ -32,7 +16,7 @@ h1 {
 }
 
 header h1 {
-  padding: .5em;
+  padding: .5em 0;
   font-size: .6em;
   color: #444;
 }
@@ -67,10 +51,18 @@ article small {
   font-size: 1em;
 }
 article h1 {
-  width: 40%;
+  width: 30%;
   text-align: right;
   color: #fff;
   text-shadow: 1px 1px 2px #666;
+}
+article .price {
+  display: inline-block;
+}
+article .origin {
+  display: inline-block;
+  color: #fff;
+  font-size: .6em;
 }
 article strong {
   color: #7FFF00;
@@ -86,8 +78,32 @@ article small {
   color: #fff;
   text-shadow: 0 0 2px #999;
 }
+article .history {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  padding: .2em 0 .2em 31%;
+  background: #666;
+  color: #ccc;
+  font-size: .6em;
+}
 
 #graph {
   height: 200px;
   background: #fff;
+}
+
+@media all and (max-width: 470px) {
+  article .origin {
+    display: none;
+  }
+  
+  article h1 {
+    width: 35%;
+  }
+
+  article .history {
+    padding-left: 36%;
+  }
 }

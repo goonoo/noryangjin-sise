@@ -1,3 +1,14 @@
+Number.prototype.format = function () {
+  var str = this.toString();
+  var Re = /[^0-9]/g;
+  var ReN = /(-?[0-9]+)([0-9]{3})/;
+  str = str.replace(Re,'');              
+  while (ReN.test(str)) { 
+    str = str.replace(ReN, "$1,$2"); 
+  }
+  return str;
+};
+
 Date.prototype.hstr = function (format) {
 	var m = this.getMonth()+1;
 	var d = this.getDate();
