@@ -83,10 +83,10 @@ article .history {
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  padding: .2em 0 .2em 31%;
+  padding: .2em .2em .2em 31%;
   background: #666;
   color: #ccc;
-  font-size: .6em;
+  font-size: .5em;
 }
 
 @media all and (max-width: 470px) {
@@ -99,7 +99,8 @@ article .history {
   }
 
   article .history {
-    padding-left: 36%;
+    padding-left: .2em;
+    text-align: center;
   }
 }
 
