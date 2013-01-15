@@ -4,6 +4,7 @@ body {
   background: #999;
   color: #333;
   font: 1.5em/1.2 NanumGothic, sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .num {
