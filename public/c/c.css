@@ -89,11 +89,6 @@ article .history {
   font-size: .6em;
 }
 
-#graph {
-  height: 200px;
-  background: #fff;
-}
-
 @media all and (max-width: 470px) {
   article .origin {
     display: none;
@@ -106,4 +101,22 @@ article .history {
   article .history {
     padding-left: 36%;
   }
+}
+
+#graph {
+  margin: 1.5em 0 0;
+  background: #fff;
+  font-size: 12px;
+  overflow-x: auto;
+
+  -moz-box-shadow:    0 0 20px #000000;
+  -webkit-box-shadow: 0 0 20px #000000;
+  box-shadow:         0 0 20px #000000;
+}
+
+svg {
+}
+
+.rule line {
+  stroke: #eee;
 }

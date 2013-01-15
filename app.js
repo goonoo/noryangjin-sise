@@ -57,7 +57,7 @@ app.get('/', function (req, res, next) {
 app.get('/sise/:name', function (req, res, next) {
   var name = req.param('name');
 
-  Price.find({'name': name}).limit(50).exec(function (err, list) {
+  Price.find({'name': name}).sort('field -ymd').limit(21).exec(function (err, list) {
     res.render('sise', {
       locals: {
         name: name,

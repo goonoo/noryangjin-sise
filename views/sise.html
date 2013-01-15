@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
   <title>노량진 <%= name %> 시세</title>
   <link rel="stylesheet" href="/c/c.css">
+  <link rel="stylesheet" href="/c/tipsy.css">
+  <style>
+  /* tipsy circle element padding monkey patching */
+  .tipsy {margin-left:3px}
+  </style>
 </head>
 <body>
   <header>
@@ -20,18 +25,149 @@ var changeClass = changes > 0 ? 'plus' : changes < 0 ? 'minus' : 'balance';
 <article class="<%= changeClass %>">
   <a href="/sise/<%= name %>">
     <h1><%= name %></h1>
-    <strong class="num"><%= price %></strong>
-    <small class="num"><%= changeClass === 'plus' ? '+' : ''
-      %><%= changes %></small>
+    <div class="origin">(원산지: <%= fishUtil.getHome(name) %>)</div>
+    <div class="price">
+      <strong class="num"><%= price %><i class="pack">/<%= fishUtil.getPack(name) %></i></strong>
+      <small class="num"><%= changeClass === 'plus' ? '+' : ''
+        %><%= changes === 0 ? '-' : changes %></small>
+    </div>
   </a>
+  <div class="history">
+    지난 5일:
+    <% var idx = 0; %>
+    <% list.forEach(function (info) { %>
+      <% idx++ %>
+      <% if (idx === 1) return; %>
+      <% if (idx > 6) return false; %>
+      <%= idx > 2 ? '-' : '' %>
+      <%= info.price.format() %>
+    <% }); %>
+  </div>
 </article>
-<div id="graph">여기다가 그래프를 그릴거야!</div>
+<div id="graph"></div>
 
 <script src="/j/d3.min.js"></script>
+<script src="/j/jquery-1.8.3.min.js"></script>
+<script src="/j/jquery.tipsy.js"></script>
 <script>
-var data = [<% list.forEach(function (data) {
-  data.price
-}); %>];
+<% list.reverse(); %>
+(function ($, d3) {
+  var data = [<%
+    for (var i=0, l=list.length; i<l; i++) {
+      %><%= list[i].price %><%= i+1 < l ? ',' : '' %><%
+    }
+  %>], ymdData = [<%
+    for (var i=0, l=list.length; i<l; i++) {
+      %>'<%= list[i].ymd %>'<%= i+1 < l ? ',' : '' %><%
+    }
+  %>], minWindowWidth = 500;
+  var w = Math.max(minWindowWidth, $(window).width() - 90),
+      h = 200,
+      isNarrowWindow = w < 800;
+      min = d3.min(data),
+      max = d3.max(data),
+      x = d3.scale.linear().domain([0, data.length]).range([0, w]),
+      y = d3.scale.linear().domain([max + 2000, min - 2000]).range([0, h]),
+      val_array = [];
+
+  for (var i=0, l=data.length; i<l; i++) {
+    val_array.push({
+      x: i,
+      y: data[i]
+    });
+  }
+
+  var graph = d3.select("#graph")
+                .data([val_array])
+                .append("svg")
+                  .attr("width", w + 90)
+                  .attr("height", h + 30)
+                .append("g")
+                  .attr("transform", "translate(60)");
+
+  var rules = graph.selectAll("g.rule")
+                   .data(x.ticks(15))
+                   .enter().append("g")
+                     .attr("class", "rule");
+
+  // draw grid lines
+  rules.append("line")
+       .attr("x1", x)
+       .attr("x2", x)
+       .attr("y1", 0)
+       .attr("y2", h - 1);
+
+  rules.append("line")
+       .attr("class", function (d) {return d ? null : "axis";})
+       .data(y.ticks(10))
+       .attr("y1", y)
+       .attr("y2", y)
+       .attr("x1", 0)
+       .attr("x2", w - 10);
+
+  // place axis tick labels
+  rules.append("text")
+       .attr("x", x)
+       .attr("y", h + 15)
+       .attr("dy", ".71em")
+       .attr("text-anchor", "middle")
+       .text(function(x){
+         var ymd = ymdData[x];
+         if (ymd && isNarrowWindow) {
+           return ymd.substr(4,2) + '/' + ymd.substr(6,2);
+         }
+         if (ymd) {
+           return ymd.substr(0,4) + '/' +
+                  ymd.substr(4,2) + '/' +
+                  ymd.substr(6,2);
+         }
+         return '';
+       });
+
+  rules.append("text")
+       .data(y.ticks(12))
+       .attr("y", y)
+       .attr("x", -10)
+       .attr("dy", ".35em")
+       .attr("text-anchor", "end")
+       .text(y.tickFormat(5));
+
+  // line
+  graph.append("path")
+       .attr("class", "line")
+       .style("stroke-width", 3)
+       .style("stroke", "steelblue")
+       .style("fill", "none")
+       .attr("d", d3.svg.line()
+                        .x(function (d) { return x(d.x); })
+                        .y(function (d) { return y(d.y); })
+                        .interpolate("linear"));
+
+  graph.selectAll("circle.line")
+       .data(val_array)
+       .enter().append("circle")
+         .attr("class", "line")
+         .attr("fill", "maroon")
+         .attr("cx", function (d) { return x(d.x); })
+         .attr("cy", function (d) { return y(d.y); })
+         .attr("r", 5)
+         .text(function (d) {
+           var ymd = ymdData[d.x];
+           var price = d.y;
+           return ymd ? ymd.substr(0,4) + '/' +
+                  ymd.substr(4,2) + '/' +
+                  ymd.substr(6,2) +": "+ price +"원" : '';
+         });
+
+  $('g circle').tipsy({
+    gravity: 's', 
+    html: true,
+    offset: 2,
+    title: function() {
+      return this.textContent;
+    }
+  });
+})(jQuery, d3);
 </script>
 
 </body>
