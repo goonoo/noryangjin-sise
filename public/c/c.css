@@ -17,9 +17,15 @@ h1 {
 }
 
 header h1 {
-  padding: .5em 0;
+  padding: .7em;
   font-size: .6em;
   color: #444;
+}
+
+header .fb-like {
+  position: absolute;
+  top: 0;
+  right: 5px;
 }
 
 article {

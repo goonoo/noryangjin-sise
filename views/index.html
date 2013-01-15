@@ -10,7 +10,9 @@
 </head>
 <body>
   <header>
-    <h1><a href="http://www.susansijang.co.kr/cost/todayCost.do">노량진 수산시장</a> 시세 (<%= new Date().hstr('Y-m-d') %> 현재)</h1>
+    <h1><a href="/">노량진 수산시장</a> 시세 (<a href="http://www.susansijang.co.kr/cost/todayCost.do"><%= new Date().hstr('m/d') %> 현재</a>)</h1>
+    <div class="fb-like" data-href="http://nrj.miya.pe.kr" data-send="true" data-layout="button_count" data-width="150"
+data-show-faces="false"></div>
   </header>
   <div id="index" class="body">
 <%
@@ -49,5 +51,14 @@ list.forEach(function (data) {
 });
 %>
   </div>
+
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>
