@@ -128,3 +128,11 @@ svg {
 .rule line {
   stroke: #eee;
 }
+
+#comments_plugin1 {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 10px;
+  box-shadow: 2px 2px 5px #666;
+  background: #fff;
+}
