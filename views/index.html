@@ -7,13 +7,14 @@
   <meta name="title" content="노량진 수산시장 시세">
   <meta name="description" content="오늘의 킹크랩 가격은? 오징어는 한마리에 얼마할까요? 노량진 수산시장 시세에서 확인해보세요.">
   <title>노량진 수산시장 시세</title>
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <link rel="apple-touch-icon" href="/i/crab.png">
   <link rel="stylesheet" href="/c/c.css">
 </head>
 <body>
   <header>
     <h1><a href="/">노량진 수산시장</a> 시세 (<a href="http://www.susansijang.co.kr/cost/todayCost.do"><%= new Date().hstr('m/d') %> 현재</a>)</h1>
-    <div class="fb-like" data-href="http://nrj.miya.pe.kr" data-send="true" data-layout="button_count" data-width="150"
+    <div class="fb-like" data-href="http://nrj.miya.pe.kr" data-send="false" data-layout="button_count" data-width="100"
 data-show-faces="false"></div>
   </header>
   <div id="index" class="body">
@@ -61,7 +62,9 @@ list.forEach(function (data) {
       target_id: 'comments_plugin1', 
       op_app_key: '6eec0bfa-b970-3818-99f5-008c97881f81',
       page_id: 'nrj',
-      page_url: 'http://nrj.miya.pe.kr'
+      page_url: 'http://nrj.miya.pe.kr',
+      page_title: '노량진 수산시장 시세',
+      is_responsive: true
   }); 
   </script>
 
