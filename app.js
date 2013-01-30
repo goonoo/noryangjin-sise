@@ -1,5 +1,7 @@
+"use strict";
+
 var express = require('express');
-var Step = require('step');
+var step = require('step');
 var db = require('./lib/db');
 var fishUtil = require('./lib/fish');
 var config = require('./config.json');
@@ -8,7 +10,7 @@ var Price = db.model('Price');
 
 require('./util/func');
 
-app.configure(function(){
+app.configure(function () {
   var dynamicHelpers = function (req, res, next) {
     res.locals.fishUtil = fishUtil;
     next();
@@ -31,7 +33,7 @@ app.get('/', function (req, res, next) {
   var thisYmd = today.hstr('Ymd');
   var fishes = config.fishes;
 
-  Step(
+  step(
     function () {
       var group = this.group();
 
@@ -74,11 +76,11 @@ app.get('/graph', function (req, res, next) {
   var month = parseInt(ym.substr(4, 2), 10);
   var fishes = config.fishes;
 
-  Price.find({'ymd': new RegExp("^"+ ym)}).sort('ymd').exec(function(err, list) {
+  Price.find({'ymd': new RegExp("^" + ym)}).sort('ymd').exec(function (err, list) {
     var i, j;
 
-    for (i=0; i<list.length; i++) {
-      for (j=0; j<fishes.length; j++) {
+    for (i = 0; i < list.length; i++) {
+      for (j = 0; j < fishes.length; j++) {
         if (fishes[j].alias === list[i].name) {
           if (!fishes[j].prices) {
             fishes[j].prices = {};

@@ -7,6 +7,7 @@
     {"consonant": "ㄱ", "name": "(활)감성돔", "home": "중국", "size": "중", "pack": "kg", "packAlias": "kg", "alias": "감성돔"},
     {"consonant": "ㅇ", "name": "(활)오징어", "home": "후포", "size": "중", "pack": "미(마리)", "packAlias": "마리", "alias": "오징어"},
     {"consonant": "ㄴ", "name": "(활)낙지", "home": "여수", "size": "중", "pack": "kg", "packAlias": "kg", "alias": "낙지(여수)"},
-    {"consonant": "ㄴ", "name": "(활)낙지", "home": "중국", "size": "중", "pack": "kg", "packAlias": "kg", "alias": "낙지(중국)"}
+    {"consonant": "ㄴ", "name": "(활)낙지", "home": "중국", "size": "중", "pack": "kg", "packAlias": "kg", "alias": "낙지(중국)"},
+    {"consonant", "ㅊ", "name": "(가공)참치", "home": "기타(원양)", "size": "대", "pack": "CT/(BT)", "packAlias": "CT/BT", "alias": "참치"}
   ]
 }
