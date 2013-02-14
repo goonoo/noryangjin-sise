@@ -31,6 +31,8 @@ list.forEach(function (data) {
 %>
     <article class="<%= changeClass %>">
       <a href="/sise/<%= name %>">
+        <img alt="" src="<%= fishUtil.getPhoto(name) %>">
+        <span class="photoLicense">license: <%= fishUtil.getPhotoFrom(name) %></span>
         <h1><%= name %></h1>
         <div class="origin">(원산지: <%= fishUtil.getHome(name) %>)</div>
         <div class="price">
