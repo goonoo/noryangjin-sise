@@ -1,6 +1,6 @@
 {
   "fishes": [
-    {"consonant": "ㅇ", "photo": "/i/fish/kingcrab.jpg", "photoFrom": "cc by-sa 3.0 The Children's Museum of Indianapolis ", "name": "(활)왕게", "home": "미국", "size": "중", "pack": "kg", "packAlias": "kg", "alias": "킹크랩", "min": 100},
+    {"consonant": "ㅇ", "photo": "/i/fish/kingcrab.jpg", "photoFrom": "cc by-sa 3.0 The Children's Museum of Indianapolis ", "name": "(활)왕게", "home": "러시아", "size": "중", "pack": "kg", "packAlias": "kg", "alias": "킹크랩", "min": 100},
     {"consonant": "ㄷ", "photo": "/i/fish/crab.jpg", "photoFrom": "http://commons.wikimedia.org/wiki/File:Chionoecetes_bairdi.jpg", "name": "(활)대게", "home": "러시아", "size": "중", "pack": "kg", "packAlias": "kg", "alias": "대게", "min": 100},
     {"consonant": "ㅂ", "photo": "/i/fish/lobster.jpg", "photoFrom": "Image courtesy of Roberto Rodríguez via Wikimedia Commons CC-BY-SA-3.0 License", "name": "(활)바다가재", "home": "캐나다", "size": "중", "pack": "kg", "packAlias": "kg", "alias": "랍스터", "min": 100},
     {"consonant": "ㄱ", "photo": "/i/fish/porgy.jpg", "photoFrom": "http://recipes.wikia.com/wiki/Tai", "name": "(활)감성돔", "home": "중국", "size": "중", "pack": "kg", "packAlias": "kg", "alias": "감성돔", "min": 100},
