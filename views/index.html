@@ -10,15 +10,21 @@
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <link rel="apple-touch-icon" href="/i/crab.png">
   <link rel="stylesheet" href="/c/c.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
+  <script>
+  document.getElementsByTagName("html")[0].className = (Modernizr.touch) ? "touch" : "notouch";
+  </script>
 </head>
 <body>
   <header>
     <h1><a href="/">노량진 수산시장</a> 시세 (<a href="http://www.susansijang.co.kr/cost/todayCost.do"><%= new Date().hstr('m/d') %> 현재</a>)</h1>
   </header>
   <div class="fb-like" data-href="http://nrj.miya.pe.kr" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
+<%
+var list_idx = 0, list_size = list.length;
+%>
   <div id="index" class="body">
 <%
-var list_idx = 0;
 list.forEach(function (fish) {
   if (!fish || !fish.prices || fish.prices.length === 0) return;
   console.log(fish);
@@ -28,36 +34,39 @@ list.forEach(function (fish) {
   var price = data[0].price;
   var changes = data[1].price ? data[0].price - data[1].price : 0;
   var articleClass = (price > fish.avg_price) ? 'expensive' : 'cheap';
-  articleClass += list_idx === 2 ? ' last' : '';
+  articleClass += list_idx%3 === 2 ? ' last' : '';
 %>
-    <article class="<%= articleClass %>" style="left:<%= list_idx*33 %>%">
-      <div class="basic">
-        <div class="photo" style="background-image:url(<%= fishUtil.getPhoto(name) %>)"></div>
-        <span class="photo-license">license: <%= fishUtil.getPhotoFrom(name) %></span>
-        <h1><%= name %></h1>
-        <div class="price">
-          <strong class="val">\<%= price %><i class="pack">/<%= fishUtil.getPack(name) %></i></strong>
+<% if (list_idx%3 === 0 && list_idx > 0) { %></div><% } %>
+<% if (list_idx%3 === 0) { %><div class="page"><% } %>
+      <article class="<%= articleClass %>" style="left:<%= (list_idx%3)*33 %>%">
+        <div class="basic">
+          <div class="photo" style="background-image:url(<%= fishUtil.getPhoto(name) %>)"></div>
+          <span class="photo-license">license: <%= fishUtil.getPhotoFrom(name) %></span>
+          <h1><%= name %></h1>
+          <div class="price">
+            <strong class="val">&#8361;<%= price %><i class="pack">/<%= fishUtil.getPack(name) %></i></strong>
+          </div>
+          <div class="price-diff"><%= changes > 0 ? '+' : ''
+            %><%= changes === 0 ? '-' : changes %></div>
         </div>
-        <div class="price-diff"><%= changes > 0 ? '+' : ''
-          %><%= changes === 0 ? '-' : changes %></div>
-      </div>
-      <div class="details">
-        <div class="origin">원산지: <%= fishUtil.getHome(name) %></div>
-        <div class="history-label"><small>최근 가격 추이</small></div>
-        <div class="history"><%
-          var idx = 0;
-          data.reverse();
-          data.forEach(function (info) {
-            idx++;
-            if (idx > 1) {%>,<%}
-            %><%= info.price %><%
-        }); %></div>
-      </div>
-    </article>
+        <div class="details">
+          <div class="origin">원산지: <%= fishUtil.getHome(name) %></div>
+          <div class="history-label"><small>최근 가격 추이</small></div>
+          <div class="history"><%
+            var idx = 0;
+            data.reverse();
+            data.forEach(function (info) {
+              idx++;
+              if (idx > 1) {%>,<%}
+              %><%= info.price %><%
+          }); %></div>
+        </div>
+      </article>
 <%
   list_idx++;
 });
 %>
+    </div>
   </div>
 
   <div id="comments"></div> 
@@ -95,17 +104,9 @@ list.forEach(function (fish) {
   </script>
 
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
   <script>
-    if (true || Modernizr.touch) {
-    //if (Modernizr.touch) {
-      $('html').addClass('touch');
-    } else {
-      $('html').addClass('notouch');
-    }
-
     $('.expensive .history').sparkline('html', {
       width: 100,
       height: 70,

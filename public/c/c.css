@@ -17,14 +17,17 @@ header {
 }
 
 .fb-like {
-  position: absolute;
+  position: absolute!important;
   top: 5px;
   left: 5px;
+  z-index: 100;
 }
 
 .body {
   text-align: center;
-  height: 500px;
+}
+.page {
+  height: 490px;
 }
 
 article {
@@ -32,7 +35,7 @@ article {
   z-index: 1;
   width: 33%;
   min-width: 300px;
-  padding-top: 10px;
+  padding: 10px 0 20px;
   vertical-align: top;
 }
 article .basic {
@@ -144,7 +147,7 @@ article .price-diff {
   padding: 10px;
 }
 
-.touch .body {
+.touch .page {
   height: auto;
 }
 .touch article {
@@ -158,8 +161,8 @@ article .price-diff {
 }
 
 @media only screen and (max-width: 900px) {
-  .body {
-    height: 350px;
+  .page {
+    height: 390px;
   }
   article {
     min-width: 200px;
