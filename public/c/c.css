@@ -1,166 +1,189 @@
 body {
   margin: 0;
   padding: 0;
-  background: #999;
+  background: #fff;
   color: #333;
   font: 1.5em/1.2 NanumGothic, sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
 
-.num {
-  font-family: tahoma, sans-serif;
+body,h1,header,article,p{display:block;margin:0;padding:0}
+
+.clear {*zoom:1}
+.clear:after{content: " ";display:block;clear:both}
+
+header {
+  display: none;
 }
 
-h1 {
-  margin: 0;
-  padding: 0;
-}
-
-header h1 {
-  padding: .7em;
-  font-size: .6em;
-  color: #444;
-}
-
-header .fb-like {
+.fb-like {
   position: absolute;
-  top: 0;
-  right: 5px;
+  top: 5px;
+  left: 5px;
 }
 
-#index {
-  width: 95%;
-  margin: 0 auto;
+.body {
+  text-align: center;
+  height: 500px;
 }
 
 article {
-  display: inline-block;
-  width: 30%;
-  margin: 0 1.5% 15px 0;
-  box-shadow: 2px 2px 5px rgba(0,0,0,.5);
+  position: absolute;
+  z-index: 1;
+  width: 33%;
+  min-width: 300px;
+  padding-top: 10px;
+  vertical-align: top;
 }
-
-article a {
-  display: block;
-  padding-bottom: 5px;
-  text-align: center;
-  text-decoration: none;
-  font-size: .8em;
-}
-article.plus a {
-  background: #DC143C;
-}
-article.minus a {
-  background: #1E90FF;
-}
-article.balance a {
-  opacity: .8;
-  background: #696969;
-}
-article a:hover {
-  background: #FF8C00;
-}
-article a img {
-  opacity: .9;
-  display: block;
-  max-width: 100%;
-}
-article a .photoLicense {
+article .basic {
   position: relative;
+  z-index: 20;
+  width: 300px;
+  margin: 0 auto;
+}
+article:hover {
+  z-index: 2;
+}
+article .details {
+  transition: 500ms;
+  opacity: 0;
   display: block;
-  height: 15px;
-  margin: -15px 0 5px;
-  background-color: rgba(0,0,0,.4);
-  font-size: 7px;
-  line-height: 15px;
+  position: absolute;
+  box-sizing: border-box;
+  top: 85px;
+  left: 50%;
+  z-index: 10;
+  width: 150px;
+  height: 150px;
+  margin-left: -100px;
+  padding: 10px;
+  border-radius: 5px;
+  background: rgba(255,255,255,.85);
+  box-shadow: 0 0 1px #000;
+  font-size: 13px;
   text-align: right;
-  color: #bbb;
-
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
-article h1,
-article strong,
-article small {
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 1em;
+.notouch article.last .details {
+  text-align: left;
 }
-article h1 {
-  display: inline-block;
-  color: #fff;
-  text-shadow: 1px 1px 2px #666;
+article.expensive .details {
+  background: #fdd;
 }
-article .origin {
-  display: inline-block;
-  color: #fff;
-  font-size: .6em;
-}
-article .price {
-  display: block;
-}
-article strong {
-  color: #7FFF00;
-  font-weight: bold;
-}
-article i {
-  opacity: .8;
-  font-size: .5em;
-  font-style: normal;
-}
-article small {
-  font-size: .6em;
-  color: #fff;
-  text-shadow: 0 0 2px #999;
+article.cheap .details {
+  background: #ddf;
 }
 article .history {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding: .2em 0;
-  background: #666;
-  text-align: center;
-  color: #ccc;
-  font-size: .45em;
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
+  height: 70px;
+}
+.notouch article.last .history {
+  right: auto;
+  left: 10px;
+}
+article .history-label {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.notouch article.last .history-label {
+  right: auto;
+  left: 10px;
+}
+article:hover .details {
+  opacity: 1;
+  margin-left: 100px;
+}
+.notouch article.last:hover .details {
+  margin-left: -250px;
+}
+article .photo {
+  transition: border 500ms;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-radius: 200px;
+  border: solid 150px rgba(0,0,0,.2);
+  background-size: cover;
+  background-origin: border-box;
+}
+article:hover .photo {
+  border: solid 1px #000;
+}
+article h1 {
+  margin: 10px 0;
+  font-size: 45px;
+}
+article .price {
+  font-size: 35px;
+}
+article.expensive .price .val {
+  color: #600;
+}
+article.cheap .price .val {
+  color: #006;
+}
+article .price .pack {
+  font-size: 13px;
+}
+article .photo-license {
+  display: none;
+}
+article .price-diff {
+  display: block;
+  margin-top: 5px;
+  font-size: 15px;
+  color: #999;
 }
 
-@media all and (max-width: 400px) {
-  article {
-    width: 98%;
-    margin-right: 0;
+#comments {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.touch .body {
+  height: auto;
+}
+.touch article {
+  position: relative;
+  width: 80%;
+  left: 0!important;
+}
+.touch article .details {
+  opacity: 1;
+  margin-left: 100px;
+}
+
+@media only screen and (max-width: 900px) {
+  .body {
+    height: 350px;
   }
-}
-
-@media all and (max-width: 800px) {
   article {
-    width: 49%;
-    margin-right: 0;
+    min-width: 200px;
   }
-}
-
-#graph {
-  margin: 1.5em 0 0;
-  background: #fff;
-  font-size: 12px;
-  overflow-x: auto;
-
-  -moz-box-shadow:    0 0 20px #000000;
-  -webkit-box-shadow: 0 0 20px #000000;
-  box-shadow:         0 0 20px #000000;
-}
-
-svg {
-}
-
-.rule line {
-  stroke: #eee;
-}
-
-#comments_plugin1 {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 0 10px;
-  box-shadow: 2px 2px 5px #666;
-  background: #fff;
+  article .basic {
+    width: 200px;
+  }
+  article .photo {
+    width: 200px;
+    height: 200px;
+    border-width: 100px;
+  }
+  article:hover .photo {
+    border-width: 1px;
+  }
+  article .details {
+    top: 35px;
+    font-size: 12px;
+  }
+  article:hover .details,
+  .touch article .details {
+    margin-left: 50px;
+  }
+  .notouch article.last:hover .details {
+    margin-left: -200px;
+  }
 }

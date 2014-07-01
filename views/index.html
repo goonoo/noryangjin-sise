@@ -14,54 +14,57 @@
 <body>
   <header>
     <h1><a href="/">노량진 수산시장</a> 시세 (<a href="http://www.susansijang.co.kr/cost/todayCost.do"><%= new Date().hstr('m/d') %> 현재</a>)</h1>
-    <div class="fb-like" data-href="http://nrj.miya.pe.kr" data-send="false" data-layout="button_count" data-width="100"
-data-show-faces="false"></div>
   </header>
+  <div class="fb-like" data-href="http://nrj.miya.pe.kr" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
   <div id="index" class="body">
 <%
-list.forEach(function (data) {
-  if (data.length < 2) {
-    return;
-  }
+var list_idx = 0;
+list.forEach(function (fish) {
+  if (!fish || !fish.prices || fish.prices.length === 0) return;
+  console.log(fish);
 
+  var data = fish.prices;
   var name = data[0].name;
   var price = data[0].price;
   var changes = data[1].price ? data[0].price - data[1].price : 0;
-  var changeClass = changes > 0 ? 'plus' : changes < 0 ? 'minus' : 'balance';
+  var articleClass = (price > fish.avg_price) ? 'expensive' : 'cheap';
+  articleClass += list_idx === 2 ? ' last' : '';
 %>
-    <article class="<%= changeClass %>">
-      <a href="/sise/<%= name %>">
-        <img alt="" src="<%= fishUtil.getPhoto(name) %>">
-        <span class="photoLicense">license: <%= fishUtil.getPhotoFrom(name) %></span>
+    <article class="<%= articleClass %>" style="left:<%= list_idx*33 %>%">
+      <div class="basic">
+        <div class="photo" style="background-image:url(<%= fishUtil.getPhoto(name) %>)"></div>
+        <span class="photo-license">license: <%= fishUtil.getPhotoFrom(name) %></span>
         <h1><%= name %></h1>
-        <div class="origin">(원산지: <%= fishUtil.getHome(name) %>)</div>
         <div class="price">
-          <strong class="num"><%= price %><i class="pack">/<%= fishUtil.getPack(name) %></i></strong>
-          <small class="num"><%= changeClass === 'plus' ? '+' : ''
-            %><%= changes === 0 ? '-' : changes %></small>
+          <strong class="val">\<%= price %><i class="pack">/<%= fishUtil.getPack(name) %></i></strong>
         </div>
-      </a>
-      <div class="history">
-        지난 5일:
-        <% var idx = 0; %>
-        <% data.forEach(function (info) { %>
-          <% idx++ %>
-          <% if (idx === 1) return; %>
-          <%= idx > 2 ? '-' : '' %>
-          <%= info.price.format() %>
-        <% }); %>
+        <div class="price-diff"><%= changes > 0 ? '+' : ''
+          %><%= changes === 0 ? '-' : changes %></div>
+      </div>
+      <div class="details">
+        <div class="origin">원산지: <%= fishUtil.getHome(name) %></div>
+        <div class="history-label"><small>최근 가격 추이</small></div>
+        <div class="history"><%
+          var idx = 0;
+          data.reverse();
+          data.forEach(function (info) {
+            idx++;
+            if (idx > 1) {%>,<%}
+            %><%= info.price %><%
+        }); %></div>
       </div>
     </article>
 <%
+  list_idx++;
 });
 %>
   </div>
 
-  <div id="comments_plugin1"></div> 
+  <div id="comments"></div> 
   <script src="//comments.skplanetx.com/script/plugin.js"></script> 
   <script type="text/javascript"> 
   SKP.commentsPlugin({ 
-      target_id: 'comments_plugin1', 
+      target_id: 'comments', 
       op_app_key: '6eec0bfa-b970-3818-99f5-008c97881f81',
       page_id: 'nrj',
       page_url: 'http://nrj.miya.pe.kr',
@@ -89,6 +92,32 @@ list.forEach(function (data) {
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
+  </script>
+
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+  <script>
+    if (true || Modernizr.touch) {
+    //if (Modernizr.touch) {
+      $('html').addClass('touch');
+    } else {
+      $('html').addClass('notouch');
+    }
+
+    $('.expensive .history').sparkline('html', {
+      width: 100,
+      height: 70,
+      fillColor: false,
+      lineColor: '#f00'
+    }); 
+    $('.cheap .history').sparkline('html', {
+      width: 100,
+      height: 70,
+      fillColor: false,
+      lineColor: '#00f'
+    }); 
   </script>
 
   <img src="/i/crab.png" style="display:none">

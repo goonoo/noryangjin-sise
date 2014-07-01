@@ -2,6 +2,8 @@
 
 var express = require('express');
 var step = require('step');
+var async = require('async');
+var _ = require('underscore');
 var db = require('./lib/db');
 var fishUtil = require('./lib/fish');
 var config = require('./config.json');
@@ -33,27 +35,26 @@ app.get('/', function (req, res, next) {
   var thisYmd = today.hstr('Ymd');
   var fishes = config.fishes;
 
-  step(
-    function () {
-      var group = this.group();
-
-      fishes.forEach(function (fish) {
-        Price.find({'name': fish.alias}).sort('field -ymd').limit(6).exec(group());
-      });
-    },
-    function (err, list) {
-      if (err) {
-        next(err);
-        return;
-      }
-
-      res.render('index', {
-        locals: {
-          list: list
-        }
-      });
+  async.map(fishes, function (fish, cb) {
+    Price.find({'name': fish.alias}).sort('field -ymd').limit(30).exec(function (err, result) {
+      if (!result || result.length === 0) return cb(err);
+      fish.prices = result;
+      fish.sum_price = _.reduce(fish.prices, function (sum, price) { return price.price + sum; }, 0);
+      fish.avg_price = fish.sum_price / fish.prices.length;
+      cb(err, fish);
+    });
+  }, function (err, list) {
+    if (err) {
+      next(err);
+      return;
     }
-  );
+
+    res.render('index', {
+      locals: {
+        list: list
+      }
+    });
+  });
 });
 
 app.get('/sise/:name', function (req, res, next) {
